@@ -16,6 +16,8 @@ class TrackDetailsViewController: UIViewController {
     
     @IBOutlet weak var releaseDateLabel: UILabel!
     
+    @IBOutlet weak var copyrightLabel: UILabel!
+    
     var track: Track?
     
     override func viewDidLoad() {
@@ -27,11 +29,21 @@ class TrackDetailsViewController: UIViewController {
             artistNameLabel.text = track.artistName
         
             releaseDateLabel.text = track.releaseDate
+            
+            copyrightLabel.text = getCopyrighText(artistName: track.artistName)
         }
     }
     
     func setup(with track: Track) {
         self.track = track
+    }
+    
+    fileprivate func getCopyrighText(artistName: String) -> String {
+        let format = NSLocalizedString("copyright", comment: "")
+        
+        let currentYear = "\(Calendar.current.component(.year, from: Date()))"
+        
+        return String.localizedStringWithFormat(format, currentYear, artistName)
     }
 
 }

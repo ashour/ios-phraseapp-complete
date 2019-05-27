@@ -28,3 +28,19 @@ let en_tracks = [
   Track(artistName: "The Midnight", trackName: "Arcade Dreams", releaseDate: "2018"),
   Track(artistName: "Mad Zach, yunis", trackName: "Moro Cut", releaseDate: "2018"),
 ]
+
+let ar_tracks = [
+    Track(artistName: "إكستراولت", trackName: "كومبوس مينتس", releaseDate: "٢.١٩"),
+    Track(artistName: "بولا", trackName: "الأمل للنكات", releaseDate: "٢.١٩"),
+    Track(artistName: "ليفنتينا", trackName: "الجاذبية - المزيج الأصلي", releaseDate: "٢.١٩"),
+    Track(artistName: "كايترانادا", trackName: "مختلة", releaseDate: "٢.١٩"),
+    Track(artistName: "منتصف الليل", trackName: "أحلام أركايد", releaseDate: "٢.١٨"),
+    Track(artistName: "ماد زاك، يونس", trackName: "مورو كت", releaseDate: "٢.١٨"),
+]
+
+let tracks: [Track] = {
+    switch(Locale.current.languageCode) {
+    case "ar": return ar_tracks
+    default: return en_tracks
+    }
+}()

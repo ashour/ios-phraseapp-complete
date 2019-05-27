@@ -13,15 +13,11 @@ class TrackListViewController: UIViewController {
     
     static let TRACK_DETAIL_SEGUE_ID = "TRACK_DETAIL_SEGUE"
     
-    @IBOutlet weak var trackCountLabel: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        trackCountLabel.text = "\(en_tracks.count) tracks"
-        
+                
         tableView.dataSource = self
         
         tableView.delegate = self
@@ -33,14 +29,14 @@ class TrackListViewController: UIViewController {
         
         let trackIndex = sender as! Int
         
-        controller.setup(with: en_tracks[trackIndex])
+        controller.setup(with: tracks[trackIndex])
     }
 }
 
 // MARK: - UITableViewDataSource
 extension TrackListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return en_tracks.count
+            return tracks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,7 +44,7 @@ extension TrackListViewController: UITableViewDataSource {
             withIdentifier: TrackListViewController.CELL_ID)
             as! TrackTableViewCell
         
-        cell.setup(with: en_tracks[indexPath.row])
+        cell.setup(with: tracks[indexPath.row])
         
         return cell
     }
